@@ -81,6 +81,17 @@ body {
     box-shadow: 0 0 0.625rem #ddd;
     border-radius: 0.75rem;
     height: 120px;
+    transition: opacity 0.5s ease, max-height 0.5s ease, margin-bottom 0.5s ease;
+    opacity: 1;
+}
+
+.removing {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
 }
 
 .item-name {
