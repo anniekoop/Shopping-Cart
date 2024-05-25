@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="E-Commerce Shopping Cart">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <main>
+            <nav id="navbar">
+                <div class="nav-container">
+                    <div class="nav-logo">
+                        <h2 class="logo">Logo</h2>
+                    </div>
+                    <div class="nav-right">
+                        <ul class="nav-menu">
+                            <li>
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">Shop</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">On Sale</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#">Collections</a>
+                            </li>
+                        </ul>
+                        <div class="button-wrap">
+                            <button id="signup-btn" class="primary-btn">Sign up</button>
+                            <div class="menu-wrap">
+                                <i class="hamburger-menu fa-solid fa-bars fa-lg" style="padding-top: 0.5rem; margin-bottom: -1rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="checkout-container">
+                    <div class="cart-overview">
+                        <div class="items">
+                            <div class="item-card" id="item-1">
+                                <div class="item-card-left">
+                                    <img class="item-img" id="img-1" alt="Product 1">
+                                    <div class="item-details-wrap">
+                                        <div class="item-text">
+                                            <h4 class="item-name" id="name-1">Swiss Cheese Potted Plant</h4>
+                                            <p class="item-details" id="details-1">60in • Duotone Basket</p>
+                                        </div>
+                                        <select id="qty-1" class="quantity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="item-card-right">
+                                    <p class="price" id="price-1">$42.00</p>
+                                    <a class="remove-link" href="#" id="remove-1">Remove</a>
+                                </div>
+                            </div>
+                            <div class="item-card" id="item-2">
+                                <div class="item-card-left">
+                                    <img class="item-img" id="img-2" alt="Product 2">
+                                    <div class="item-details-wrap">
+                                        <h4 class="item-name" id="name-2">Swiss Cheese Potted Plant</h4>
+                                        <p class="item-details" id="details-2">60in • Duotone Basket</p>
+                                        <select id="qty-2" class="quantity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="item-card-right">
+                                    <p class="price" id="price-2">$42.00</p>
+                                    <a class="remove-link" href="#" id="remove-2">Remove</a>
+                                </div>
+                            </div>
+                            <div class="item-card" id="item-3">
+                                <div class="item-card-left">
+                                    <img class="item-img" id="img-3" alt="Product 2">
+                                    <div class="item-details-wrap">
+                                        <h4 class="item-name" id="name-3">Swiss Cheese Potted Plant</h4>
+                                        <p class="item-details" id="details-3">60in • Duotone Basket</p>
+                                        <select id="qty-3" class="quantity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="item-card-right">
+                                    <p class="price" id="price-3">$42.00</p>
+                                    <a class="remove-link" href="#" id="remove-3">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="all-pricing">
+                            <h1 class="cart-title">Your Cart</h1>
+                            <div class="pricing-wrap">
+                                <p class="pricing-label">Subtotal</p>
+                                <p class="pricing" id="subtotal">$91.00</p>
+                            </div>
+                            <div class="pricing-wrap">
+                                <p class="pricing-label">Taxes</p>
+                                <p class="pricing" id="taxes">$8.00</p>
+                            </div>
+                            <div class="pricing-div"></div>
+                            <div class="pricing-wrap">
+                                <p class="pricing-label total-label">Total</p>
+                                <p class="pricing total" id="total">$99.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-container">
+                        <div class="payment-spacer"></div>
+                        <div class="payment-options">
+                            <button id="pay-with-card-btn" class="card-btn">Pay with card</button>
+                            <button id="pay-with-paypal-btn" class="paypal-btn">Pay with<span class="paypal-logo-wrap"><img src="PayPal.svg" class="paypal-logo"></span></button>
+                        </div>
+                        <form class="card-payment" id="card-payment-form">
+                            <h3 class="card-header">Card Details</h3>
+                            <input id="card-name" placeholder="Cardholder name" required class="payment-input"> 
+                            <input id="card-number" placeholder="Card number" required class="payment-input">
+                            <div class="card-exp">
+                                <p class="exp-label">Exp. date</p>
+                                <div class="exp-flex">
+                                    <select id="exp-month" class="payment-input exp-input">
+                                        <option value="January">Jan</option>
+                                        <option value="February">Feb</option>
+                                        <option value="March">Mar</option>
+                                        <option value="April">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="June">Jun</option>
+                                        <option value="July">Jul</option>
+                                        <option value="August">Aug</option>
+                                        <option value="September">Sept</option>
+                                        <option value="October">Oct</option>
+                                        <option value="November">Nov</option>
+                                        <option value="December">Dec</option>
+                                    </select>
+                                    <select id="exp-year" class="payment-input exp-input">
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>
+                                        <option value="2031">2031</option>
+                                        <option value="2032">2032</option>
+                                        <option value="2033">2033</option>
+                                    </select>
+                                </div>
+                                <div class="cvc-flex">
+                                    <input id="cvc" type="number" max-length="4" min-length="3" placeholder="CVC" required class="payment-input cvc-input">
+                                    <p class="cvc-info"><span class="info-icon-wrap"><svg class="info-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 0 64 64">
+                                        <path d="M 32 10 C 19.85 10 10 19.85 10 32 C 10 44.15 19.85 54 32 54 C 44.15 54 54 44.15 54 32 C 54 19.85 44.15 10 32 10 z M 32 14 C 41.941 14 50 22.059 50 32 C 50 41.941 41.941 50 32 50 C 22.059 50 14 41.941 14 32 C 14 22.059 22.059 14 32 14 z M 32 21 C 30.343 21 29 22.343 29 24 C 29 25.657 30.343 27 32 27 C 33.657 27 35 25.657 35 24 C 35 22.343 33.657 21 32 21 z M 32 30 C 30.895 30 30 30.896 30 32 L 30 42 C 30 43.104 30.895 44 32 44 C 33.105 44 34 43.104 34 42 L 34 32 C 34 30.896 33.105 30 32 30 z"></path>
+                                        </svg></span>The 3 digits usually found on the back of your card.</p>
+                                </div>
+                            </div>
+                            <button id="submit-btn" class="submit-btn">Submit order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+        <script src="https://kit.fontawesome.com/5dbbbfb0c5.js" crossorigin="anonymous"></script>
+    </body>
+</html>
