@@ -26,19 +26,16 @@ const item3 = document.getElementById('item-3');
 const price1 = document.getElementById('price-1');
 const name1 = document.getElementById('name-1');
 const details1 = document.getElementById('details-1');
-const qty1 = document.getElementById('qty-1').value;
 const img1 = document.getElementById('img-1');
 
 const price2 = document.getElementById('price-2');
 const name2 = document.getElementById('name-2');
 const details2 = document.getElementById('details-2');
-const qty2 = document.getElementById('qty-2').value;
 const img2 = document.getElementById('img-2');
 
 const price3 = document.getElementById('price-3');
 const name3 = document.getElementById('name-3');
 const details3 = document.getElementById('details-3');
-const qty3 = document.getElementById('qty-3').value;
 const img3 = document.getElementById('img-3');
 
 price1.textContent = `$${items[0].price}`;
@@ -61,22 +58,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const taxesElement = document.getElementById('taxes');
     const totalElement = document.getElementById('total');
 
-    const itemPrices = items.map(item => parseFloat(item.price));
+    const item1Price = parseFloat(items[0].price);
+    const item2Price = parseFloat(items[1].price);
+    const item3Price = parseFloat(items[2].price);
 
     function calculateTotals() {
-        const qtyElements = document.querySelectorAll('.quantity');
-        let cartSubtotal = 0;
+        const qty1 = document.getElementById('item-1') ? parseInt(document.getElementById('qty-1').value) : 0;
+        const qty2 = document.getElementById('item-2') ? parseInt(document.getElementById('qty-2').value) : 0;
+        const qty3 = document.getElementById('item-3') ? parseInt(document.getElementById('qty-3').value) : 0;
 
-        qtyElements.forEach((qtyElement, index) => {
-            const itemElement = document.getElementById(`item-${index + 1}`);
-            if (itemElement.style.display !== 'none') {
-                const qty = parseInt(qtyElement.value);
-                const itemTotal = itemPrices[index] * qty;
-                document.getElementById(`price-${index + 1}`).textContent = `$${itemTotal.toFixed(2)}`;
-                cartSubtotal += itemTotal;
-            }
-        });
+        const item1Total = item1Price * qty1;
+        const item2Total = item2Price * qty2;
+        const item3Total = item3Price * qty3;
 
+        if (document.getElementById('item-1')) {
+            document.getElementById('price-1').textContent = `$${item1Total.toFixed(2)}`;
+        }
+        if (document.getElementById('item-2')) {
+            document.getElementById('price-2').textContent = `$${item2Total.toFixed(2)}`;
+        }
+        if (document.getElementById('item-3')) {
+            document.getElementById('price-3').textContent = `$${item3Total.toFixed(2)}`;
+        }
+
+        const cartSubtotal = item1Total + item2Total + item3Total;
         const cartTaxes = cartSubtotal * 0.15;
         const cartTotal = cartSubtotal + cartTaxes;
 
@@ -89,17 +94,21 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateTotals();
 
     // Add event listeners to quantity select elements
-    document.querySelectorAll('.quantity').forEach(element => {
-        element.addEventListener('change', calculateTotals);
-    });
+    document.getElementById('qty-1').addEventListener('change', calculateTotals);
+    document.getElementById('qty-2').addEventListener('change', calculateTotals);
+    document.getElementById('qty-3').addEventListener('change', calculateTotals);
 
     // Add event listeners to remove links
-    document.querySelectorAll('.remove-link').forEach((removeLink, index) => {
-        removeLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            const itemElement = document.getElementById(`item-${index + 1}`);
-            itemElement.style.display = 'none';
-            calculateTotals();
-        });
+    document.getElementById('remove-1').addEventListener('click', function() {
+        item1.remove();
+        calculateTotals();
+    });
+    document.getElementById('remove-2').addEventListener('click', function() {
+        item2.remove();
+        calculateTotals();
+    });
+    document.getElementById('remove-3').addEventListener('click', function() {
+        item3.remove();
+        calculateTotals();
     });
 });
