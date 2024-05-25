@@ -96,3 +96,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('qty-2').addEventListener('change', calculateTotals);
     document.getElementById('qty-3').addEventListener('change', calculateTotals);
 });
+
+const removeLink1 = document.getElementById('remove-1');
+removeLink1.addEventListener('click', function() {
+    item1.style.display = 'none'
+});
+
+const removeLink2 = document.getElementById('remove-2');
+removeLink2.addEventListener('click', function() {
+    item2.style.display = 'none'
+})
+
+const removeLink3 = document.getElementById('remove-3');
+removeLink3.addEventListener('click', function() {
+    item3.style.display = 'none'
+})
