@@ -61,25 +61,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const taxesElement = document.getElementById('taxes');
     const totalElement = document.getElementById('total');
 
-    const item1Price = parseFloat(items[0].price);
-    const item2Price = parseFloat(items[1].price);
-    const item3Price = parseFloat(items[2].price);
+    const itemPrices = items.map(item => parseFloat(item.price));
 
     function calculateTotals() {
-        const qty1 = parseInt(document.getElementById('qty-1').value);
-        const qty2 = parseInt(document.getElementById('qty-2').value);
-        const qty3 = parseInt(document.getElementById('qty-3').value);
+        const qtyElements = document.querySelectorAll('.quantity');
+        let cartSubtotal = 0;
 
-        const item1Total = item1Price * qty1;
-        const item2Total = item2Price * qty2;
-        const item3Total = item3Price * qty3;
+        qtyElements.forEach((qtyElement, index) => {
+            const itemElement = document.getElementById(`item-${index + 1}`);
+            if (itemElement.style.display !== 'none') {
+                const qty = parseInt(qtyElement.value);
+                const itemTotal = itemPrices[index] * qty;
+                document.getElementById(`price-${index + 1}`).textContent = `$${itemTotal.toFixed(2)}`;
+                cartSubtotal += itemTotal;
+            }
+        });
 
-        // Update individual item prices
-        document.getElementById('price-1').textContent = `$${item1Total.toFixed(2)}`;
-        document.getElementById('price-2').textContent = `$${item2Total.toFixed(2)}`;
-        document.getElementById('price-3').textContent = `$${item3Total.toFixed(2)}`;
-
-        const cartSubtotal = item1Total + item2Total + item3Total;
         const cartTaxes = cartSubtotal * 0.15;
         const cartTotal = cartSubtotal + cartTaxes;
 
@@ -92,8 +89,17 @@ document.addEventListener('DOMContentLoaded', function() {
     calculateTotals();
 
     // Add event listeners to quantity select elements
-    document.getElementById('qty-1').addEventListener('change', calculateTotals);
-    document.getElementById('qty-2').addEventListener('change', calculateTotals);
-    document.getElementById('qty-3').addEventListener('change', calculateTotals);
-});
+    document.querySelectorAll('.quantity').forEach(element => {
+        element.addEventListener('change', calculateTotals);
+    });
 
+    // Add event listeners to remove links
+    document.querySelectorAll('.remove-link').forEach((removeLink, index) => {
+        removeLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            const itemElement = document.getElementById(`item-${index + 1}`);
+            itemElement.style.display = 'none';
+            calculateTotals();
+        });
+    });
+});
